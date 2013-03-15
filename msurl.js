@@ -21,7 +21,7 @@ try {
     fatalError(error);
 }
 
-var matches = /URL=(.*)/.exec(fileContent);
+var matches = /^URL=(.+)/m.exec(fileContent);
 if (!matches) {
     fatalError('The .url file "' + urlFilePath + '" may be malformed')
 }
