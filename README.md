@@ -9,6 +9,8 @@ The original script did not work with one of my .url file so I rewrote it using 
 Usage
 =====
 
+Pre-requisite: [NodeJS](http://nodejs.org/).
+
 Open a terminal and go to a temporary directory (`mkdir ~/tmp ; cd ~/tmp`). Then, do the following steps:
 
     git clone https://github.com/cGuille/msurl.git
