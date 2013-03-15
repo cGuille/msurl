@@ -4,7 +4,7 @@ msurl
 A little nodejs script that handle the Micro$oft .url file format.
 
 This script is inspired from the Perl version that you can find in [this blog post](http://ubuntugenius.wordpress.com/2009/12/09/how-to-open-url-internet-explorer-shortcuts-in-ubuntu-using-firefox/) (thanks to the author).
-The original script did not work with one of my .url file so I rewrote it using a NodeJS.
+The original script did not work with one of my .url file so I rewrote it using NodeJS (cause I don't know Perl).
 
 Usage
 =====
@@ -14,9 +14,8 @@ Open a terminal and go to a temporary directory (`mkdir ~/tmp ; cd ~/tmp`). Then
     git clone https://github.com/cGuille/msurl.git
     cd msurl
 
-If necessary, open the file msurl.js with your favorite text editor and edit this line to specify which command to use to launch your favorite web browser:
-    'browser-cmd': '[your-browser-command]'
-Sample values: 'chromium-browser' (default), 'firefox', 'chrome'…
+If necessary, open the file msurl.js with your favorite text editor and edit this line to specify which command to use to launch your favorite web browser: `'browser-cmd': 'chromium-browser'`
+Replace `'chromium-browser'` with any browser command you want to use (`'firefox'`, `'chrome'`…).
 
 Then save the file and go back to your terminal:
 
