@@ -11,12 +11,12 @@ Usage
 
 Pre-requisite: [NodeJS](http://nodejs.org/).
 
-Open a terminal and go to a temporary directory (*e.g.* `mkdir ~/tmp ; cd ~/tmp`). Then, do the following steps:
+Open a terminal and go to a temporary directory ( *e.g.* `mkdir ~/tmp ; cd ~/tmp`). Then, do the following steps:
 
     git clone https://github.com/cGuille/msurl.git
     cd msurl
 
-If necessary (*i.e.* if you don't use the same browser as me), open the file msurl.js with your favorite text editor and edit this line to specify which command to use to launch your favorite web browser:
+If necessary ( *i.e.* if you don't use the same browser as me), open the file msurl.js with your favorite text editor and edit this line to specify which command to use to launch your favorite web browser:
 
 `'browser-cmd': 'chromium-browser'`
 
