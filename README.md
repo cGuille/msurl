@@ -6,8 +6,8 @@ A little nodejs script that handles the Micro$oft .url file format.
 This script is inspired from the Perl version that you can find in [this blog post](http://ubuntugenius.wordpress.com/2009/12/09/how-to-open-url-internet-explorer-shortcuts-in-ubuntu-using-firefox/) (thanks to the author).
 The original script did not work with one of my .url file so I rewrote it using NodeJS (cause I don't know Perl).
 
-Usage
-=====
+Installation
+============
 
 Pre-requisite: [NodeJS](http://nodejs.org/).
 
@@ -27,7 +27,10 @@ Then save the file and go back to your terminal:
     chmod a+x msurl.js
     sudo cp msurl.js /usr/bin/msurl
 
-To complete the process, you will have to configure the file associations in your GUI environnement to make it use msurl to handle the .url files.
+GUI Usage
+=========
+
+You will have to configure the file associations in your GUI environnement to make it use msurl to handle the .url files.
 Under KDE, this can be performed by doing the following steps:
   - right click on a .url file;
   - choose "Open With > Other";
@@ -36,3 +39,18 @@ Under KDE, this can be performed by doing the following steps:
   - Click "Ok" to confirm.
 
 Enjoy!
+
+CLI Usage
+=========
+
+Open a shortcut:
+
+    msurl <internet shortcut>
+    
+Where `<internet shortcut>` is the shortcut to handle.
+
+Create a shortcut to an url:
+
+    msurl --make <url> <file path>
+    
+Where `<url>` is the URL to open in browser, and `<file path>` the path where the shortcut will be created.
