@@ -5,29 +5,52 @@ var config = {
     };
 
 var fs = require('fs'),
-    spawn = require('child_process').spawn;
+    spawn = require('child_process').spawn,
+    format = require('util').format;
 
-var urlFilePath = process.argv[2],
-    fileContent,
-    url;
+var urlFileFormat = '[{000214A0-0000-0000-C000-000000000046}]\r\nProp3=19,2\r\n[InternetShortcut]\r\nURL=%s\r\nIDList=',
+    urlFilePath = process.argv[2],
+    fileContent, url;
 
-if (!fs.existsSync(urlFilePath)) {
-    fatalError('The given Internet Shortcut file "' + urlFilePath + '" does not exist!');
+if (urlFilePath === '--make') {
+    make(process.argv[3], process.argv[4]);
+} else {
+    open(urlFilePath);
 }
 
-try {
-    fileContent = fs.readFileSync(urlFilePath).toString();
-} catch (error) {
-    fatalError(error);
+function make(url, urlFilePath) {
+    if (!/\w:\/\/.+/.test(url)) {
+        fatalError('The format of the provided URL seems to be incorrect.')
+    }
+    if (fs.existsSync(urlFilePath)) {
+        fatalError('The given path for the Internet Shortcut file "' + urlFilePath + '" already exist.');
+    }
+    fs.writeFile(urlFilePath, format(urlFileFormat, url), function (error) {
+        if (error) {
+            fatalError(error);
+        }
+    });
 }
 
-var matches = /^URL=(.+)/m.exec(fileContent);
-if (!matches) {
-    fatalError('The .url file "' + urlFilePath + '" may be malformed')
-}
+function open(urlFilePath) {
+    if (!fs.existsSync(urlFilePath)) {
+        fatalError('The given Internet Shortcut file "' + urlFilePath + '" does not exist!');
+    }
 
-url = matches[1];
-spawn(config['browser-cmd'], [url]);
+    try {
+        fileContent = fs.readFileSync(urlFilePath).toString();
+    } catch (error) {
+        fatalError(error);
+    }
+
+    var matches = /^URL=(.+)/m.exec(fileContent);
+    if (!matches) {
+        fatalError('The .url file "' + urlFilePath + '" may be malformed')
+    }
+
+    url = matches[1];
+    spawn(config['browser-cmd'], [url]);
+}
 
 function fatalError(message) {
     console.error(message);
