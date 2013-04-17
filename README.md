@@ -9,23 +9,13 @@ The original script did not work with one of my .url file so I rewrote it using 
 Installation
 ============
 
-Pre-requisite: [NodeJS](http://nodejs.org/).
+Pre-requisite: Git, xdg-open, [NodeJS](http://nodejs.org/).
 
 Open a terminal and go to a temporary directory ( *e.g.* `mkdir ~/tmp ; cd ~/tmp`). Then, do the following steps:
 
     git clone https://github.com/cGuille/msurl.git
     cd msurl
-
-If necessary ( *i.e.* if you don't use the same browser as me), open the file msurl.js with your favorite text editor and edit this line to specify which command to use to launch your favorite web browser:
-
-`'browser-cmd': 'chromium-browser'`
-
-Replace `'chromium-browser'` with any browser command you want to use (`'firefox'`, `'chrome'`…).
-
-Then save the file and go back to your terminal:
-
-    chmod a+x msurl.js
-    sudo cp msurl.js /usr/bin/msurl
+    npm install
 
 GUI Usage
 =========

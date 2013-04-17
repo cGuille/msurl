@@ -1,0 +1,11 @@
+{
+  "name": "msurl",
+  "author": {
+    "name": "Guillaume Charmetant",
+    "email": "cguille.dev@gmail.com",
+    "url": "http://twitter.com/cGuille"
+  },
+  "scripts": {
+    "postinstall": "chmod a+x msurl.js && sudo cp msurl.js /usr/bin/msurl"
+  }
+}

@@ -1,17 +1,11 @@
 #!/usr/bin/env node
 
-var config = {
-        'browser-cmd': 'chromium-browser'
-    };
-
 var fs = require('fs'),
     spawn = require('child_process').spawn,
     format = require('util').format;
 
 var urlFileFormat = '[{000214A0-0000-0000-C000-000000000046}]\r\nProp3=19,2\r\n[InternetShortcut]\r\nURL=%s\r\nIDList=',
-    urlFilePath = process.argv[2],
-    argc = process.argv.length,
-    fileContent, url;
+    argc = process.argv.length;
 
 if (argc === 4) {
     create(process.argv[2], process.argv[3]);
@@ -40,6 +34,8 @@ function open(urlFilePath) {
         fatalError('The given Internet Shortcut file "' + urlFilePath + '" does not exist!');
     }
 
+    var fileContent;
+
     try {
         fileContent = fs.readFileSync(urlFilePath).toString();
     } catch (error) {
@@ -51,8 +47,7 @@ function open(urlFilePath) {
         fatalError('The .url file "' + urlFilePath + '" may be malformed')
     }
 
-    url = matches[1];
-    spawn(config['browser-cmd'], [url]);
+    spawn('xdg-open', [matches[1]]);
 }
 
 function fatalError(message) {
