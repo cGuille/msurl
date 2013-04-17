@@ -51,6 +51,6 @@ Where `<internet shortcut>` is the shortcut to handle.
 
 Create a shortcut to an url:
 
-    msurl --make <url> <file path>
+    msurl <url> <file path>
     
 Where `<url>` is the URL to open in browser, and `<file path>` the path where the shortcut will be created.

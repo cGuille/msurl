@@ -10,15 +10,18 @@ var fs = require('fs'),
 
 var urlFileFormat = '[{000214A0-0000-0000-C000-000000000046}]\r\nProp3=19,2\r\n[InternetShortcut]\r\nURL=%s\r\nIDList=',
     urlFilePath = process.argv[2],
+    argc = process.argv.length,
     fileContent, url;
 
-if (urlFilePath === '--make') {
-    make(process.argv[3], process.argv[4]);
+if (argc === 4) {
+    create(process.argv[2], process.argv[3]);
+} else if (argc === 3) {
+    open(process.argv[2]);
 } else {
-    open(urlFilePath);
+    fatalError('Usage:\r\n  - Open an URL shortcut:\r\n       msurl <internet-shortcut.url>\r\n  - Create an URL shortcut:\r\n       msurl <url> <output path>');
 }
 
-function make(url, urlFilePath) {
+function create(url, urlFilePath) {
     if (!/\w:\/\/.+/.test(url)) {
         fatalError('The format of the provided URL seems to be incorrect.')
     }
