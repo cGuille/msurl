@@ -36,6 +36,9 @@ function create(url, urlFilePath) {
     if (!/\w:\/\/.+/.test(url)) {
         fatalError('The format of the provided URL seems to be incorrect.')
     }
+
+    urlFilePath = appendExtensionIfNeeded(urlFilePath, 'url');
+
     if (fs.existsSync(urlFilePath)) {
         fatalError('The given path for the Internet Shortcut file "' + urlFilePath + '" already exist.');
     }
@@ -70,4 +73,21 @@ function open(urlFilePath) {
 function fatalError(message) {
     console.error(message);
     process.exit(1);
+}
+
+/**
+ * Append the given extension to the path, if it is not already present
+ * @param  {string} path            the path to process
+ * @param  {string} wishedExtension the extension you need
+ * @return {string}                 the path, with the extension appended if needed
+ */
+function appendExtensionIfNeeded(path, wishedExtension) {
+    var dotLastIndex = path.lastIndexOf('.'),
+        pathExtension = path.substr(dotLastIndex + 1);
+
+    if (-1 === dotLastIndex || pathExtension.toLowerCase() !== wishedExtension) {
+        path += '.' + wishedExtension;
+    }
+
+    return path;
 }
