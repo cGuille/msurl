@@ -1,5 +1,7 @@
 {
   "name": "msurl",
+  "version": "0.0.2",
+
   "author": {
     "name": "Guillaume Charmetant",
     "email": "cguille.dev@gmail.com",
